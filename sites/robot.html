@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfólió - 2026</title>
+    <!-- BS CSS-->
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="text-light">
+    
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div>
+            <a href="index.html" class="navbar-brand ms-3 fw-bold fs-4 kekes">
+                Portfólió</a>
+        </div>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#tizenharom" >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        <div class="collapse navbar-collapse" id="tizenharom">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link kekes fw-bold">Főoldal</a>
+                </li>
+               
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle kekes fw-bold active" href="#" role="button" data-bs-toggle="dropdown">
+                      Projektjeim</a>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item kekes" href="projekt1.html">Weblapkészítés</a></li>
+                      <li><a class="dropdown-item kekes" href="adatbazis.html">Adatbázis kezelés</a></li>
+                      <li><a class="dropdown-item kekes" href="halozat.html">Hálózatkezelés</a></li>
+                      <li><a class="dropdown-item kekes" href="robot.html">Robottechnika</a></li>
+                      <li><a class="dropdown-item kekes" href="programfelj.html">Programfejlesztés</a></li>
+                      <li><a class="dropdown-item kekes" href="szamitogeprend.html">Számítógépes rendszerüzemeltetés</a></li>
+                      <li><a class="dropdown-item kekes" href="mikroveziot.html">Mikrovezérlő és IoT</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="onreflexio.html" class="nav-link kekes fw-bold">Önreflexió</a>
+                </li>
+
+            </ul>
+        </div>
+    </nav>
+
+   <div class=" row justify-content-center">
+    <div id="carouselExampleCaptions" class="carousel slide col-lg-6 reveal">
+       
+      </div>    
+    </div>
+    <section class=" py-5 hatterszin ">
+        <div class="container">
+            <h2 class="kekes text-center display-4 fw-bold mb-5 section-title">Robottechnika</h2>
+            <div class="row justify-content-center">
+                <div class="col lg-10">
+                     <h3>Használt eszközök</h3>
+                        <ul>
+                            <li>Motoman ipari robotkar</li>
+                            <li>Robot szimulációs szoftver</li>
+                            <li>Számítógép</li>
+                            <li>Virtuális munkakörnyezet</li>
+                        </ul>
+
+                      <h3>Projekt leírása:</h3>   
+                    
+
+                    <p class= "fs-4 lh-lg text-justify mb-4">A projekt egy Motoman robotkar alkalmazását mutatja be egy automatizált festési feladat megvalósítására. A robotkar egy ecset segítségével fest meg egy munkadarabot, a folyamat elején a festékes dobozba mártja az ecsetet, majd lefesti a felületet. A festés befejezése után a robotkar kiemelkedik, és egy LED világítani kezd, jelezve, hogy a folyamat lezárult és a paletta cserére vár. A csere után egy gomb megnyomásával a LED kikapcsol, és a rendszer újraindítja a festési ciklust.</p>
+                    <h3>A Projektet csoportmunkában végeztük:</h3>
+                    <p>D.Nagy Dominik, Tóth Levente Samu, Pataki Kolos</p>
+                    <h4>Robottechnika projekt bemutató videó:</h4>
+
+                    <video controls class="w-100 rounded shadow">
+                        <source src="../video/Robot.mp4" type="video/mp4">
+                        A böngésző nem támogatja a videó lejátszását.
+                    </video>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+    <!-- BS JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const navbar = document.querySelector('.navbar');
+  const updateNavbar = () => {
+    if (!navbar) return;
+    navbar.classList.toggle('scrolled', window.scrollY > 16);
+  };
+  updateNavbar();
+  window.addEventListener('scroll', updateNavbar, { passive: true });
+
+  const candidates = document.querySelectorAll('section, .carousel, .kartya_hatterszin, .profilkep');
+  candidates.forEach((el, index) => {
+    if (el.closest('.hero-section') && el.classList.contains('hero-section')) return;
+    if (!el.classList.contains('reveal') && !el.classList.contains('reveal-left') && !el.classList.contains('reveal-right')) {
+      el.classList.add(index % 3 === 0 ? 'reveal-left' : index % 3 === 1 ? 'reveal' : 'reveal-right');
+    }
+  });
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('reveal-visible');
+      }
+    });
+  }, { threshold: 0.18, rootMargin: '0px 0px -60px 0px' });
+
+  document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach((el) => observer.observe(el));
+});
+</script>
+</body>
+</html>
